@@ -10,20 +10,48 @@
   </head>
 
   <body>
-    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><%= fa_icon "home" %> Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://ludias.co"><%= image_tag "lu_logo.png", class: "nav-icon" %> Lu Dias</a>
+      </li>
+    </ul>
 
     <%= render "search" %>
-    <%= yield %>
+    <div class="dropdown navbar-user-dropdown">
+      <a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= avatar current_user, "btn-circle" %>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <% if signed_in? %>
+          <%= link_to 'Sign out', sign_out_path, method: :delete, class: "dropdown-item" %>
+        <% else %>
+          <%= link_to 'Sign in', sign_in_path, class: "dropdown-item" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
+  
+  <div id="flash">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
+        <%= value %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+  </div>
+
+  <%= yield %>
   </body>
 </html>

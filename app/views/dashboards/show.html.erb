@@ -1,11 +1,15 @@
-<h1> Dashboard </h1>
+<div class="container main-content">
+  <div class="row">
+    <%= render @summary %>
 
-<%= shout_form_for(TextShout) do |form| %>
-  <%= form.text_field :body, placeholder: "shout here!", required: true %>
-<% end %>
+    <%= shout_form_for(TextShout) do |form| %>
+      <%= form.text_field :body, placeholder: "shout here!", required: true %>
+    <% end %>
 
-<%= shout_form_for(PhotoShout) do |form| %>
-  <%= form.file_field :image, required: true %>
-<% end %>
+    <%= shout_form_for(PhotoShout) do |form| %>
+      <%= form.file_field :image, required: true %>
+    <% end %>
 
-<%= render @dashboard.timeline %>
+    <%= render @dashboard.timeline %>
+  </div>
+</div>
