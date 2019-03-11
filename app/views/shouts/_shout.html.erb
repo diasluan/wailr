@@ -1,11 +1,24 @@
-  <div>
-    <br>
-    <%= avatar shout.user %>
-    <%= link_to shout.username, shout.user %>: 
-    <%= render shout.content %>
-    <%= link_to shout do %>
-      <%= time_ago_in_words(shout.created_at) %> ago
-    <% end %>
-
-    <%= like_button(shout) %>
+<li class="tweet-card">
+  <div class="tweet-content">
+    <div class="tweet-header">
+      <span class="fullname">
+        <strong><%= shout.username %></strong>
+      </span>
+      <span class="username">@<%= link_to shout.username, shout.user %></span>
+      <span class="tweet-time">- 
+        <%= link_to shout do %>
+          <%= time_ago_in_words(shout.created_at) %> ago
+        <% end %>
+      </span>
+    </div>
+    <a>
+      <%= avatar shout.user, "tweet-card-avatar" %>
+    </a>
+    <div class="tweet-text">
+      <%= render shout.content %>
+    </div>
+    <div class="tweet-footer">
+      <%= like_button(shout) %>
+    </div>
   </div>
+</li>

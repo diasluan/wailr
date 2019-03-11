@@ -32,8 +32,8 @@ module Shoutr
   end
 end
 
-Unsplash.configure do |config|
-  config.application_access_key = "ff655704c11ffd504ba40e7316c54feb457eff1fb11e5910c431f141fe4dd0e9"
-  config.application_secret = "604d48d22c14be79d67ce330f4f58878b38c7f518127a7bdbc1442bc821f4ba1"
-  config.utm_source = "wailr"
-end
+# Unsplash.configure do |config|
+#   config.application_access_key = "ff655704c11ffd504ba40e7316c54feb457eff1fb11e5910c431f141fe4dd0e9"
+#   config.application_secret = "604d48d22c14be79d67ce330f4f58878b38c7f518127a7bdbc1442bc821f4ba1"
+#   config.utm_source = "wailr"
+# end
